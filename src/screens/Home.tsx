@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import {
+  FlatList,
+  Image,
+  ImageStyle,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -9,6 +12,9 @@ import {
   ViewStyle,
 } from 'react-native';
 import { GooglePlacesAutocomplete, Styles } from 'react-native-google-places-autocomplete';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Category, useCategoriesData } from '../hooks/useCategoriesData';
 import globalStyles from '../styles/globalStyles';
 
 interface HomeStyles {
@@ -34,6 +40,7 @@ export const Home = () => {
         <HeaderTabs />
         <SearchBar />
       </View>
+      <Categories />
     </SafeAreaView>
   );
 };
@@ -116,6 +123,71 @@ const HeaderButton = ({ isSelected, onPress, text }: HeaderButtonProps) => {
 
 //#endregion
 
+//#region RenderSearchBarLeftButton
+
+interface SearchBarLeftButtonStyles {
+  container: ViewStyle;
+  icon: TextStyle;
+}
+
+const searchBarLeftButtonStyles = StyleSheet.create<SearchBarLeftButtonStyles>({
+  container: {
+    marginLeft: 10,
+  },
+  icon: {
+    color: 'black',
+  },
+});
+
+const SearchBarLeftButton = () => {
+  return (
+    <View style={searchBarLeftButtonStyles.container}>
+      <Ionicons name="location-sharp" size={24} style={searchBarLeftButtonStyles.icon} />
+    </View>
+  );
+};
+
+//#endregion
+
+//#region SearchBarRightButton
+
+interface SearchBarRightButtonStyles {
+  container: ViewStyle;
+  icon: TextStyle;
+  text: TextStyle;
+}
+
+const searchBarRightButtonStyles = StyleSheet.create<SearchBarRightButtonStyles>({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 8,
+    padding: 9,
+    backgroundColor: 'white',
+    borderRadius: 30,
+  },
+  icon: {
+    marginRight: 6,
+    color: 'black',
+  },
+  text: {
+    color: 'black',
+  },
+});
+
+const SearchBarRightButton = () => {
+  return (
+    <View style={searchBarRightButtonStyles.container}>
+      <AntDesign name="clockcircle" size={11} style={searchBarRightButtonStyles.icon} />
+      <Text style={searchBarRightButtonStyles.text}>Search</Text>
+    </View>
+  );
+};
+
+//#endregion
+
+//#region SearchBar
+
 interface SearchBarStyles {
   container: ViewStyle;
 }
@@ -149,6 +221,8 @@ const SearchBar = () => {
       <GooglePlacesAutocomplete
         styles={searchInput}
         placeholder="Search"
+        renderLeftButton={SearchBarLeftButton}
+        renderRightButton={SearchBarRightButton}
         onPress={(data, details = null) => {
           // 'details' is provided when fetchDetails = true
           console.log(data, details);
@@ -161,3 +235,81 @@ const SearchBar = () => {
     </View>
   );
 };
+
+//#endregion
+
+//#region Categories
+
+interface CategoriesStyles {
+  container: ViewStyle;
+  icon: TextStyle;
+  text: TextStyle;
+}
+
+const categoriesStyles = StyleSheet.create<CategoriesStyles>({
+  container: {
+    flex: 1,
+  },
+  icon: {
+    marginRight: 6,
+    color: 'black',
+  },
+  text: {
+    color: 'black',
+  },
+});
+
+const Categories = () => {
+  const items = useCategoriesData();
+
+  return (
+    <SafeAreaView style={categoriesStyles.container}>
+      <FlatList
+        data={items}
+        horizontal
+        renderItem={({ item }) => <CategoryCard image={item.image} text={item.text} />}
+      />
+      <Text style={categoriesStyles.text}>Search</Text>
+    </SafeAreaView>
+  );
+};
+
+//#endregion
+
+//#region
+
+interface CategoryCardStyles {
+  container: ViewStyle;
+  image: ImageStyle;
+  text: TextStyle;
+}
+
+const categoryCardStyles = StyleSheet.create<CategoryCardStyles>({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 30,
+  },
+  image: {
+    width: 50,
+    height: 40,
+    resizeMode: 'contain',
+  },
+  text: {
+    color: 'black',
+    fontSize: 13,
+    fontWeight: '900',
+  },
+});
+
+type CategoryCardProps = Category;
+
+const CategoryCard = ({ image, text }: CategoryCardProps) => {
+  return (
+    <View style={categoryCardStyles.container}>
+      <Image source={image} style={categoryCardStyles.image} />
+      <Text style={categoryCardStyles.text}>{text}</Text>
+    </View>
+  );
+};
+//#endregion
