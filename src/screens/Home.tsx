@@ -2,6 +2,7 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, View, ViewStyle } from 'react-native';
 import { Categories } from '../features/Home/Categories';
 import { HeaderTabs } from '../features/Home/HeaderTabs';
+import { Restaurants } from '../features/Home/Restaurants';
 import { SearchBar } from '../features/Home/SearchBarStyles';
 import globalStyles from '../styles/globalStyles';
 
@@ -29,6 +30,7 @@ export const Home = () => {
         <SearchBar />
       </View>
       <Categories />
+      <Restaurants />
     </SafeAreaView>
   );
 };
