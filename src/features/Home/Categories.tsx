@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, SafeAreaView, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { FlatList, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { useCategoriesData } from '../../hooks/useCategoriesData';
 import { CategoryCard } from './CategoryCard';
 
@@ -24,16 +24,15 @@ const categoriesStyles = StyleSheet.create<CategoriesStyles>({
 });
 
 export const Categories = () => {
-  const items = useCategoriesData();
+  const categories = useCategoriesData();
 
   return (
-    <SafeAreaView style={categoriesStyles.container}>
-      <FlatList
-        data={items}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        renderItem={({ item }) => <CategoryCard image={item.image} text={item.text} />}
-      />
-    </SafeAreaView>
+    <FlatList
+      data={categories}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      renderItem={({ item }) => <CategoryCard image={item.image} text={item.text} />}
+      style={categoriesStyles.container}
+    />
   );
 };
