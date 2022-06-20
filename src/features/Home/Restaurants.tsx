@@ -11,17 +11,23 @@ import {
   ViewStyle,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useLocalRestaurantsData } from '../../hooks/useRestaurantsData';
+import { useGetRestaurantsQuery } from '../../services/restaurantApi';
 
 export const Restaurants = () => {
-  const localRestaurants = useLocalRestaurantsData();
+  const { data: restaurants, error, isLoading } = useGetRestaurantsQuery('Bogota');
 
-  return (
+  if (error) {
+    return <Text>Error</Text>;
+  }
+
+  return isLoading || !restaurants ? (
+    <Text>Loading</Text>
+  ) : (
     <FlatList
-      data={localRestaurants}
+      data={restaurants}
       renderItem={({ item }) => (
         <RestaurantCard
-          image={item.imageUrl}
+          image={item.image_url}
           name={item.name}
           rating={item.rating}
           waitingTime={'13 to 45 mins'}
