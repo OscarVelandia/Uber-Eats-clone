@@ -9,7 +9,7 @@ module.exports = {
         moduleName: '@env',
         path: '.env',
         blocklist: null,
-        allowlist: ['YELP_API_KEY', 'YELP_CLIENT_ID'],
+        allowlist: ['GOOGLE_PLACES_API_KEY', 'YELP_API_KEY', 'YELP_CLIENT_ID'],
       },
     ],
   ],
