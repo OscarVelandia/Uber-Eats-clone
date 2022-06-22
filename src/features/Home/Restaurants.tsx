@@ -12,9 +12,20 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useGetRestaurantsQuery } from '../../services/restaurantApi';
+import { useAppSelector } from '../../store/hooks';
 
 export const Restaurants = () => {
-  const { data: restaurants, error, isLoading } = useGetRestaurantsQuery('Bogota');
+  const selectedOption = useAppSelector((state) => state.shippingOption.selectedOption);
+  const cityOrCountry = useAppSelector((state) => state.searchBar.cityOrCountry);
+  const { restaurants, error, isLoading } = useGetRestaurantsQuery(cityOrCountry, {
+    selectFromResult: ({ data, ...rest }) => {
+      return {
+        restaurants: data?.filter((restaurant) => restaurant.transactions.includes(selectedOption)),
+        error: rest.error,
+        isLoading: rest.isLoading,
+      };
+    },
+  });
 
   if (error) {
     return <Text>Error</Text>;

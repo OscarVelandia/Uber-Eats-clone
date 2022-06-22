@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SafeAreaView, StyleSheet, ViewStyle } from 'react-native';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { HeaderButton } from './HeaderButton';
+import { setShippingOption } from './ShippingOptionSlice';
 
 interface HeaderTabsStyles {
   container: ViewStyle;
@@ -15,21 +17,20 @@ const headerTabsStyles = StyleSheet.create<HeaderTabsStyles>({
   },
 });
 
-type Sections = 'Delivery' | 'Pickup';
-
 export const HeaderTabs = () => {
-  const [isCurrentSection, setIsCurrentSection] = useState<Sections>('Delivery');
+  const dispatch = useAppDispatch();
+  const selectedOption = useAppSelector((state) => state.shippingOption.selectedOption);
 
   return (
     <SafeAreaView style={headerTabsStyles.container}>
       <HeaderButton
-        isSelected={isCurrentSection === 'Delivery'}
-        onPress={() => setIsCurrentSection('Delivery')}
+        isSelected={selectedOption === 'delivery'}
+        onPress={() => dispatch(setShippingOption('delivery'))}
         text="Delivery"
       />
       <HeaderButton
-        isSelected={isCurrentSection === 'Pickup'}
-        onPress={() => setIsCurrentSection('Pickup')}
+        isSelected={selectedOption === 'pickup'}
+        onPress={() => dispatch(setShippingOption('pickup'))}
         text="Pickup"
       />
     </SafeAreaView>

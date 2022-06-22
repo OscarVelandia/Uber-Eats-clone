@@ -1,5 +1,6 @@
 import { YELP_API_KEY } from '@env';
 import { createApi } from '@reduxjs/toolkit/query/react';
+import { ShippingOptions } from '../features/ServiceType/ShippingOptionSlice';
 import { axiosBaseQuery } from '../utils/axiosBaseQuery';
 
 export interface Restaurant {
@@ -17,7 +18,7 @@ export interface Restaurant {
   price: '$' | '$$' | '$$$';
   rating: number;
   review_count: number;
-  transactions: unknown;
+  transactions: Array<ShippingOptions>;
   url: `https://www.yelp.com/${string}`;
   waitingTime: `${number}-${number} - min` | `more than ${number} hour`;
 }
