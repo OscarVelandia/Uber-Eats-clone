@@ -27,7 +27,7 @@ interface HeaderButtonProps {
   text: string;
 }
 
-export const HeaderButton = ({ isSelected, onPress, text }: HeaderButtonProps) => {
+export const RoundedButton = ({ isSelected, onPress, text }: HeaderButtonProps) => {
   return (
     <TouchableOpacity style={headerButtonStyles(isSelected).container} onPress={onPress}>
       <Text style={headerButtonStyles(isSelected).text}>{text}</Text>

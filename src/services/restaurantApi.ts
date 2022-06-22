@@ -1,6 +1,6 @@
 import { YELP_API_KEY } from '@env';
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { ShippingOptions } from '../features/ServiceType/ShippingOptionSlice';
+import { ShippingOptions } from '../features/shippingOptions/ShippingOptionSlice';
 import { axiosBaseQuery } from '../utils/axiosBaseQuery';
 
 export interface Restaurant {

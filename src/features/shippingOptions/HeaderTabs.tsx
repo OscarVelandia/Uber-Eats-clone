@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, ViewStyle } from 'react-native';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { HeaderButton } from './HeaderButton';
+import { RoundedButton } from '../../components/RoundedButton';
 import { setShippingOption } from './ShippingOptionSlice';
 
 interface HeaderTabsStyles {
@@ -23,12 +23,12 @@ export const HeaderTabs = () => {
 
   return (
     <SafeAreaView style={headerTabsStyles.container}>
-      <HeaderButton
+      <RoundedButton
         isSelected={selectedOption === 'delivery'}
         onPress={() => dispatch(setShippingOption('delivery'))}
         text="Delivery"
       />
-      <HeaderButton
+      <RoundedButton
         isSelected={selectedOption === 'pickup'}
         onPress={() => dispatch(setShippingOption('pickup'))}
         text="Pickup"
