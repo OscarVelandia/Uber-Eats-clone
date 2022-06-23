@@ -1,7 +1,7 @@
+import { RoundedButton } from '@components';
+import { useAppDispatch, useAppSelector } from '@store';
 import React from 'react';
 import { SafeAreaView, StyleSheet, ViewStyle } from 'react-native';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { RoundedButton } from '../../components/RoundedButton';
 import { setShippingOption } from './ShippingOptionSlice';
 
 interface HeaderTabsStyles {

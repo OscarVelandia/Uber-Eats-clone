@@ -1,6 +1,6 @@
+import { useCategoriesData } from '@hooks';
 import React from 'react';
 import { FlatList, StyleSheet, TextStyle, ViewStyle } from 'react-native';
-import { useCategoriesData } from '../../hooks/useCategoriesData';
 import { CategoryCard } from './CategoryCard';
 
 interface CategoriesStyles {

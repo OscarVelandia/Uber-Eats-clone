@@ -12,5 +12,21 @@ module.exports = {
         allowlist: ['GOOGLE_PLACES_API_KEY', 'YELP_API_KEY', 'YELP_CLIENT_ID'],
       },
     ],
+    [
+      'module-resolver',
+      {
+        root: ['.'],
+        alias: {
+          '@components': './src/components',
+          '@features': './src/features',
+          '@hooks': './src/hooks',
+          '@screens': './src/screens',
+          '@services': './src/services',
+          '@store': './src/store',
+          '@styles': './src/styles',
+          '@utils': './src/utils',
+        },
+      },
+    ],
   ],
 };

@@ -20,4 +20,4 @@ const shippingOptionSlice = createSlice({
 
 export const { setShippingOption } = shippingOptionSlice.actions;
 
-export default shippingOptionSlice.reducer;
+export const shippingOptionReducer = shippingOptionSlice.reducer;

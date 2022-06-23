@@ -1,7 +1,7 @@
+import { searchBarReducer } from '@features/SearchBar';
+import { shippingOptionReducer } from '@features/shippingOptions';
 import { configureStore } from '@reduxjs/toolkit';
-import { restaurantApi } from '../services/restaurantApi';
-import searchBarReducer from '../features/SearchBar/SearchBarSlice';
-import shippingOptionReducer from '../features/shippingOptions/ShippingOptionSlice';
+import { restaurantApi } from '@services';
 
 export const store = configureStore({
   reducer: {

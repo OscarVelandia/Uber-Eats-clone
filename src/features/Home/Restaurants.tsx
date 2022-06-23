@@ -1,3 +1,5 @@
+import { useGetRestaurantsQuery } from '@services';
+import { useAppSelector } from '@store';
 import React from 'react';
 import {
   FlatList,
@@ -11,8 +13,6 @@ import {
   ViewStyle,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useGetRestaurantsQuery } from '../../services/restaurantApi';
-import { useAppSelector } from '../../store/hooks';
 
 export const Restaurants = () => {
   const selectedOption = useAppSelector((state) => state.shippingOption.selectedOption);

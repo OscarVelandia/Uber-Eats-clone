@@ -1,10 +1,9 @@
+import { Categories, Restaurants } from '@features/Home';
+import { SearchBar } from '@features/SearchBar';
+import { HeaderTabs } from '@features/shippingOptions';
+import { globalStyles } from '@styles';
 import React from 'react';
 import { SafeAreaView, StyleSheet, View, ViewStyle } from 'react-native';
-import { Categories } from '../features/Home/Categories';
-import { HeaderTabs } from '../features/shippingOptions/HeaderTabs';
-import { Restaurants } from '../features/Home/Restaurants';
-import { SearchBar } from '../features/SearchBar/SearchBar';
-import globalStyles from '../styles/globalStyles';
 
 interface HomeStyles {
   container: ViewStyle;

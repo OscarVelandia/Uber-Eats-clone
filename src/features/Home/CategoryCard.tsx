@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, ImageStyle, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
-import { Category } from '../../hooks/useCategoriesData';
+import { Category } from '@hooks';
 
 interface CategoryCardStyles {
   container: ViewStyle;

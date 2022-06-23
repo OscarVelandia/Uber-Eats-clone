@@ -18,4 +18,4 @@ const searchBarSlice = createSlice({
 
 export const { setCityOrCountry } = searchBarSlice.actions;
 
-export default searchBarSlice.reducer;
+export const searchBarReducer = searchBarSlice.reducer;
