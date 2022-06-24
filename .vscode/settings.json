@@ -5,6 +5,7 @@
     "clockcircle",
     "endregion",
     "Ionicons",
+    "Pressable",
     "proguard"
   ]
 }
