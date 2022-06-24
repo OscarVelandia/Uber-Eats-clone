@@ -1,12 +1,10 @@
-import { searchBarReducer } from '@features/SearchBar';
-import { shippingOptionReducer } from '@features/shippingOptions';
+import { homeReducer } from '@features/Home';
 import { configureStore } from '@reduxjs/toolkit';
 import { restaurantApi } from '@services';
 
 export const store = configureStore({
   reducer: {
-    searchBar: searchBarReducer,
-    shippingOption: shippingOptionReducer,
+    homeReducer: homeReducer,
     [restaurantApi.reducerPath]: restaurantApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {

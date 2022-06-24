@@ -1,6 +1,4 @@
-import { Categories, Restaurants } from '@features/Home';
-import { SearchBar } from '@features/SearchBar';
-import { HeaderTabs } from '@features/shippingOptions';
+import { BottomTabs, Categories, HeaderTabs, Restaurants, SearchBar } from '@features/Home';
 import { globalStyles } from '@styles';
 import React from 'react';
 import { SafeAreaView, StyleSheet, View, ViewStyle } from 'react-native';
@@ -30,6 +28,7 @@ export const Home = () => {
       </View>
       <Categories />
       <Restaurants />
+      <BottomTabs />
     </SafeAreaView>
   );
 };

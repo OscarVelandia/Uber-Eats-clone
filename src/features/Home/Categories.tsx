@@ -1,25 +1,16 @@
 import { useCategoriesData } from '@hooks';
 import React from 'react';
-import { FlatList, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { FlatList, StyleSheet, ViewStyle } from 'react-native';
 import { CategoryCard } from './CategoryCard';
 
 interface CategoriesStyles {
   container: ViewStyle;
-  icon: TextStyle;
-  text: TextStyle;
 }
 
 const categoriesStyles = StyleSheet.create<CategoriesStyles>({
   container: {
     backgroundColor: 'white',
     paddingVertical: 10,
-  },
-  icon: {
-    marginRight: 6,
-    color: 'black',
-  },
-  text: {
-    color: 'black',
   },
 });
 

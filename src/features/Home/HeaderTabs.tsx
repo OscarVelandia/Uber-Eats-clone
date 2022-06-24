@@ -1,8 +1,8 @@
 import { RoundedButton } from '@components';
+import { setShippingOption } from '@features/Home';
 import { useAppDispatch, useAppSelector } from '@store';
 import React from 'react';
 import { SafeAreaView, StyleSheet, ViewStyle } from 'react-native';
-import { setShippingOption } from './ShippingOptionSlice';
 
 interface HeaderTabsStyles {
   container: ViewStyle;
@@ -19,7 +19,7 @@ const headerTabsStyles = StyleSheet.create<HeaderTabsStyles>({
 
 export const HeaderTabs = () => {
   const dispatch = useAppDispatch();
-  const selectedOption = useAppSelector((state) => state.shippingOption.selectedOption);
+  const selectedOption = useAppSelector((state) => state.homeReducer.selectedOption);
 
   return (
     <SafeAreaView style={headerTabsStyles.container}>
