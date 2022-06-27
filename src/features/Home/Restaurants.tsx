@@ -15,8 +15,8 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export const Restaurants = () => {
-  const selectedOption = useAppSelector((state) => state.shippingOption.selectedOption);
-  const cityOrCountry = useAppSelector((state) => state.searchBar.cityOrCountry);
+  const selectedOption = useAppSelector((state) => state.homeReducer.selectedOption);
+  const cityOrCountry = useAppSelector((state) => state.homeReducer.cityOrCountry);
   const { restaurants, error, isLoading } = useGetRestaurantsQuery(cityOrCountry, {
     selectFromResult: ({ data, ...rest }) => {
       return {
